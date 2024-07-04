@@ -1,39 +1,61 @@
 import React, { useRef } from "react";
-import { View, Text, StyleSheet, Pressable, Animated } from "react-native";
+import { View, Text, StyleSheet, Pressable, Animated, Easing } from "react-native";
 import { colors } from "../../config/theme/theme";
 
 export const Animation101Screen = () => {
 
-   
-   const animateOpacity = useRef(new Animated.Value(0)).current; 
 
-   const fadeIn = () => {
+  const animateOpacity = useRef(new Animated.Value(0)).current;
+
+  const aninatedTop = useRef(new Animated.Value(-100)).current;
+
+
+  const fadeIn = () => {
+
+    Animated.timing(aninatedTop, {
+      toValue: 0,
+      duration: 700,
+      useNativeDriver: true,
+     // easing: Easing.elastic(1),
+     easing: Easing.bounce
+    }).start(
+      () => console.log("animation finished")
+    );
+
+
     Animated.timing(animateOpacity, {
       toValue: 1,
       duration: 300,
       useNativeDriver: true,
     }).start(
-        () => console.log("animation finished")
+      () => console.log("animation finished")
     );
-   }
+  }
 
-   const fadeOut = () => {
+  const fadeOut = () => {
     Animated.timing(animateOpacity, {
       toValue: 0,
       duration: 300,
       useNativeDriver: true,
+     
     }).start(
-        () => console.log("animation finished")
+      () => aninatedTop.resetAnimation()
     );
-   }
+    
+  }
 
 
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.purpleBox,
-        {
-          opacity: animateOpacity,
-        }
+      {
+        opacity: animateOpacity,
+        transform: [
+          {
+            translateY: aninatedTop
+          }
+        ]
+      }
       ]} />
 
       <Pressable
