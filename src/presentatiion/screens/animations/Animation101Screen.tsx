@@ -1,49 +1,12 @@
 import React, { useRef } from "react";
 import { View, Text, StyleSheet, Pressable, Animated, Easing } from "react-native";
 import { colors } from "../../config/theme/theme";
+import { useAnimations } from "../../hooks/useAnimations";
 
 export const Animation101Screen = () => {
 
-
-  const animateOpacity = useRef(new Animated.Value(0)).current;
-
-  const aninatedTop = useRef(new Animated.Value(-100)).current;
-
-
-  const fadeIn = () => {
-
-    Animated.timing(aninatedTop, {
-      toValue: 0,
-      duration: 700,
-      useNativeDriver: true,
-     // easing: Easing.elastic(1),
-     easing: Easing.bounce
-    }).start(
-      () => console.log("animation finished")
-    );
-
-
-    Animated.timing(animateOpacity, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true,
-    }).start(
-      () => console.log("animation finished")
-    );
-  }
-
-  const fadeOut = () => {
-    Animated.timing(animateOpacity, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true,
-     
-    }).start(
-      () => aninatedTop.resetAnimation()
-    );
-    
-  }
-
+  const {animateOpacity,aninatedTop,fadeIn,fadeOut,startMovingTopPosition} = useAnimations()
+ 
 
   return (
     <View style={styles.container}>
@@ -59,14 +22,29 @@ export const Animation101Screen = () => {
       ]} />
 
       <Pressable
-        onPress={fadeIn}
+        onPress={()=>{
+          fadeIn({});
+          startMovingTopPosition({
+            initialPosition: -100,
+            duration: 600,
+            toValue: 0,
+            easig: Easing.elastic(1),
+          })
+        }}
+
         style={{ marginTop: 10 }}
       >
         <Text>Fade in</Text>
       </Pressable>
 
       <Pressable
-        onPress={fadeOut}
+        onPress={
+          f=> fadeOut({
+            duration: 300,
+            toValue: 0,
+            callback: () => console.log("animation finished")
+          })
+        }
         style={{ marginTop: 10 }}
       >
         <Text>Fade out</Text>
