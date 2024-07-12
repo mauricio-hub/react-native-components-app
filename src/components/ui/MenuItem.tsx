@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { colors } from '../../config/theme/theme';
+
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../../presentatiion/config/theme/theme';
 
 interface Props {
   name: string;

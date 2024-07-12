@@ -2,8 +2,9 @@ import React from "react";
 import { View } from "react-native";
 import { globalStyles } from "../../config/theme/theme";
 import { ScrollView } from "react-native-gesture-handler";
-import { Title } from "../ui/Title";
-import { MenuItems } from "../ui/MenuItem";
+import { MenuItems } from "../../../components/ui/MenuItem";
+import { Title } from "../../../components/ui/Title";
+
 
 const animationMenuItems = [
   // 01-animationMenuItems
