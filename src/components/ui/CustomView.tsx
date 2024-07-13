@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { View, Text, StyleProp, ViewStyle } from 'react-native';
 import { globalStyles } from '../../presentatiion/config/theme/theme';
+interface Props {
+  style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
+  margin?: boolean;
+}
 
-
-export const CustomView = () => {
+export const CustomView = ({style, children, margin = false}: Props) => {
   return (
-    <View style={{
-      marginTop: 100,
-      paddingHorizontal: 10,
-    }}>
-   
+    <View
+      style={[
+        globalStyles.mainContainer,
+        margin ? globalStyles.globalMargin : null,
+        style,
+      ]}>
+      {children}
     </View>
   );
 };
