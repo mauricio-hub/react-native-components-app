@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
 import { CustomView } from "../../../components/ui/CustomView";
-import { Card } from "../../../components/Card";
-import { Button } from "../../../components/ui/Button";
-import { Switch } from "react-native-gesture-handler";
 import { CustomSwitch } from "../../../components/ui/CustomSwitch";
 import { Separator } from "../../../components/ui/Separator";
+import { Card } from "../../../components/ui/Card";
 
 export const SwitchScreen = () => {
   const [isEnabled, setIsEnabled] = useState(false);

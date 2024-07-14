@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Text, View } from 'react-native';
-import { colors } from '../presentatiion/config/theme/theme';
+import { colors } from '../../presentatiion/config/theme/theme';
+
 
 
 interface Props extends PropsWithChildren {
