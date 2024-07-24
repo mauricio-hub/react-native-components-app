@@ -6,17 +6,21 @@ import { Button } from "../../../components/ui/Button";
 import { ThemeContext } from "../../context/ThemeContext";
 
 export const ChangeThemeScreen = () => {
-  const { setTheme } = useContext(ThemeContext);
+  const { setTheme,currentTheme } = useContext(ThemeContext);
 
   return (
     <CustomView margin>
-      <Title text="Change Theme" safe />
+      <Title text={`Cambiar tema: ${currentTheme}`} safe />
 
       <Button text="Light" onPress={() => setTheme("light")} />
 
       <View style={{ height: 10 }} />
 
       <Button text="Dark" onPress={() => setTheme("dark")} />
+
+
+
+
     </CustomView>
   );
 };

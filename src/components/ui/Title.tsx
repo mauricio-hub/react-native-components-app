@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text } from "react-native";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { globalStyles, colors } from "../../presentatiion/config/theme/theme";
+import { ThemeContext } from "../../presentatiion/context/ThemeContext";
 
 interface Props {
   text: string;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export const Title = ({ text, safe = false, white = false }: Props) => {
+  const {colors} = useContext(ThemeContext);
   const { top } = useSafeAreaInsets();
   return (
     <Text
@@ -18,7 +20,7 @@ export const Title = ({ text, safe = false, white = false }: Props) => {
         ...globalStyles.title,
         marginTop: safe ? top : 0,
         marginBottom: 10,
-        color: white ? "white" : colors.text,
+        color: white ? 'white' : colors.text
       }}
     >
       {text}

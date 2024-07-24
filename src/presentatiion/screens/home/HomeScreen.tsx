@@ -4,6 +4,7 @@ import { globalStyles } from "../../config/theme/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { MenuItems } from "../../../components/ui/MenuItem";
 import { Title } from "../../../components/ui/Title";
+import { CustomView } from "../../../components/ui/CustomView";
 
 const animationMenuItems = [
   // 01-animationMenuItems
@@ -74,7 +75,7 @@ const uiMenuItems = [
 
 export const HomeScreen = () => {
   return (
-    <View style={[globalStyles.mainContainer]}>
+    <CustomView margin>
       <View style={globalStyles.globalMargin}>
         <ScrollView>
           <Title text="Components del menu" safe />
@@ -113,6 +114,6 @@ export const HomeScreen = () => {
           ))}
         </ScrollView>
       </View>
-    </View>
+    </CustomView>
   );
 };
