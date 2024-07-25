@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { CustomView } from "../../../components/ui/CustomView";
 import { CustomSwitch } from "../../../components/ui/CustomSwitch";
 import { Separator } from "../../../components/ui/Separator";
 import { Card } from "../../../components/ui/Card";
 
+
 export const SwitchScreen = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+
 
   const [state, setState] = useState({
     isActive: true,

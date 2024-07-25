@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View } from "react-native";
-import { globalStyles } from "../../config/theme/theme";
+import { colors, globalStyles } from "../../config/theme/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { MenuItems } from "../../../components/ui/MenuItem";
 import { Title } from "../../../components/ui/Title";
 import { CustomView } from "../../../components/ui/CustomView";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const animationMenuItems = [
   // 01-animationMenuItems
@@ -74,6 +75,8 @@ const uiMenuItems = [
 ];
 
 export const HomeScreen = () => {
+
+ 
   return (
     <CustomView margin>
       <View style={globalStyles.globalMargin}>

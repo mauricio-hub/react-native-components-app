@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -9,9 +9,10 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from "react-native";
-import { colors, globalStyles } from "../../config/theme/theme";
+import { globalStyles } from "../../config/theme/theme";
 import { Button } from "../../../components/ui/Button";
 import { useNavigation } from "@react-navigation/native";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface Slide {
   title: string;
@@ -41,6 +42,7 @@ export const SlidesScreen = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();
+  const { colors } = useContext(ThemeContext);
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { contentOffset, layoutMeasurement } = event.nativeEvent;
@@ -106,6 +108,7 @@ interface SlideItemProps {
 const SlideItem = ({ item }: SlideItemProps) => {
   const { width } = useWindowDimensions();
   const { title, desc, img } = item;
+  const { colors } = useContext(ThemeContext);
 
   return (
     <View
@@ -127,13 +130,13 @@ const SlideItem = ({ item }: SlideItemProps) => {
         }}
       />
 
-      <Text style={[globalStyles.title, { color: colors.primary }]}>
+      <Text style={[globalStyles.title, { color: colors.primary  }]}>
         {title}
       </Text>
 
       <Text
         style={{
-          color: colors.text,
+           color: colors.text,
           marginTop: 20,
         }}
       >

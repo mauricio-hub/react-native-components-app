@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleProp, ViewStyle } from "react-native";
-import { colors } from "../../presentatiion/config/theme/theme";
+import { ThemeContext } from "../../presentatiion/context/ThemeContext";
+
 
 interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
 export const Separator = ({ style }: Props) => {
+  const {colors} = useContext(ThemeContext);
   return (
     <View
       style={{
